@@ -1,0 +1,80 @@
+#------------------------------------------------------------
+#        Script MySQL.
+#------------------------------------------------------------
+
+
+#------------------------------------------------------------
+# Table: USER
+#------------------------------------------------------------
+
+CREATE TABLE USER(
+        id        Int  Auto_increment  NOT NULL ,
+        lastName  Varchar (30) NOT NULL ,
+        firstName Varchar (30) NOT NULL ,
+        birthDate Date NOT NULL ,
+        email     Varchar (30) NOT NULL ,
+        phone     Int NOT NULL ,
+        address   Varchar (150) NOT NULL ,
+        cp        Int NOT NULL ,
+        city      Varchar (50) NOT NULL
+	,CONSTRAINT USER_PK PRIMARY KEY (id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: RIDE
+#------------------------------------------------------------
+
+CREATE TABLE RIDE(
+        id          Int  Auto_increment  NOT NULL ,
+        title       Varchar (25) NOT NULL ,
+        description Varchar (500) NOT NULL ,
+        date        Date NOT NULL ,
+        start       Varchar (250) NOT NULL ,
+        finish      Varchar (250) NOT NULL ,
+        id_USER     Int NOT NULL
+	,CONSTRAINT RIDE_PK PRIMARY KEY (id)
+
+	,CONSTRAINT RIDE_USER_FK FOREIGN KEY (id_USER) REFERENCES USER(id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: MOTOS
+#------------------------------------------------------------
+
+CREATE TABLE MOTOS(
+        motos_id    Int  Auto_increment  NOT NULL ,
+        motos_brand Varchar (50) NOT NULL ,
+        motos_model Varchar (50) NOT NULL
+	,CONSTRAINT MOTOS_PK PRIMARY KEY (motos_id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: take_a_ride
+#------------------------------------------------------------
+
+CREATE TABLE take_a_ride(
+        id      Int NOT NULL ,
+        id_USER Int NOT NULL
+	,CONSTRAINT take_a_ride_PK PRIMARY KEY (id,id_USER)
+
+	,CONSTRAINT take_a_ride_RIDE_FK FOREIGN KEY (id) REFERENCES RIDE(id)
+	,CONSTRAINT take_a_ride_USER0_FK FOREIGN KEY (id_USER) REFERENCES USER(id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: own_moto
+#------------------------------------------------------------
+
+CREATE TABLE own_moto(
+        motos_id Int NOT NULL ,
+        id       Int NOT NULL
+	,CONSTRAINT own_moto_PK PRIMARY KEY (motos_id,id)
+
+	,CONSTRAINT own_moto_MOTOS_FK FOREIGN KEY (motos_id) REFERENCES MOTOS(motos_id)
+	,CONSTRAINT own_moto_USER0_FK FOREIGN KEY (id) REFERENCES USER(id)
+)ENGINE=InnoDB;
+

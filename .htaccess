@@ -1,0 +1,10 @@
+
+#Indiquer au serveur quel fichier considérer comme un fichier d'index
+DirectoryIndex /index.php /views/errors/error_403.php
+#Active/Désactive le module de réécriture.
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+#Si le pattern correspond, indique comment réécrire l'URL.
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
