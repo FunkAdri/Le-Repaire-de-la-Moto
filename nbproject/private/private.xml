@@ -5,9 +5,10 @@
         <group>
             <file>file:/home/funkadri/www/lerepairedelamoto/assets/error404.css</file>
             <file>file:/home/funkadri/www/lerepairedelamoto/assets/style.css</file>
-            <file>file:/home/funkadri/www/lerepairedelamoto/views/navbar.php</file>
             <file>file:/home/funkadri/www/lerepairedelamoto/views/accueil.php</file>
+            <file>file:/home/funkadri/www/lerepairedelamoto/views/navbar.php</file>
             <file>file:/home/funkadri/www/lerepairedelamoto/index.php</file>
+            <file>file:/home/funkadri/www/lerepairedelamoto/views/inscription.php</file>
             <file>file:/home/funkadri/www/lerepairedelamoto/views/errors/error_404.php</file>
         </group>
     </open-files>
