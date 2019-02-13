@@ -58,6 +58,20 @@ class patients extends database {
         return $sql->execute();
     }
     
+    /**
+     * Méthode permettant d'afficher les données d'un utilisateur,
+     * grâce aux attributs instanciés plus haut
+     * @return Affichage des infos de l'utilisateur
+     */
+     public function displayUser() {
+        // On prépare la requête -> "Prends l'e patient'utilisateur égale à l'id"
+        $sql = $this->database->prepare('SELECT * FROM `USER` WHERE id = :id');
+        // On bind la valeur ID au marqueur nominatif ID
+        $sql->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $sql->execute();
+        return $sql->fetch(PDO::FETCH_OBJ);
+    }
+    
     // PAS ENCORE REFAIT POUR LE SITE
     
     
@@ -69,20 +83,6 @@ class patients extends database {
      public function displayPatients() {
         $sql = $this->database->query('SELECT * FROM patients ORDER BY lastname');
         return $sql->fetchAll(PDO::FETCH_OBJ);
-    }
-    
-    // Exercice3
-    /**
-     * Méthode qui renvoie les informations appartenanant à un patient, grâce aux attributs instanciés plus haut
-     * @return Tableau des informations du patient
-     */
-     public function displayInfoPatient() {
-        // On prépare la requête -> "Prends le patient égale à l'id"
-        $sql = $this->database->prepare('SELECT * FROM patients WHERE id = :id');
-        // On bind la valeur ID au marqueur nominatif ID
-        $sql->bindValue(':id', $this->id, PDO::PARAM_INT);
-        $sql->execute();
-        return $sql->fetch(PDO::FETCH_OBJ);
     }
     
     // Exercice4

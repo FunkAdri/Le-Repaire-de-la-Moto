@@ -1,9 +1,14 @@
 /* GÉNÉRAL */
-.marg {
-  margin-top: 5rem;
+div.card {
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
 }
-.marg2 {
-   margin-bottom: 5rem; 
+
+.margtop-1 {
+  margin-top: 1rem;
+  backgrounnd-color: red;
+}
+.margtop-2 {
+   margin-top: 2rem; 
 }
 .pad {
     padding-top: 5rem;
@@ -11,10 +16,27 @@
 .pad2 {
     padding-bottom: 5rem;
 }
+
 /* ACCUEIL */
 .marg-carrousel {
     margin-top: 1rem;
 }
+.text-center{
+    text-align: center;
+}
+
+/* INSCRIPTION */
+.birthdate-center {
+    text-align: center;
+}
+.pad-button {
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+.button-space{
+    padding-right: 1rem;
+}
+
 /* PROFILS */
 .align-insc {
   text-align: center;
@@ -35,14 +57,6 @@
 }
 
 /* NAVBAR */
-.logo {
-    border-radius: 25%;
-    box-shadow: 8px 8px 12px #1C1D21;
-}
-
-.nav-shadow {
-    box-shadow: 8px #1C1D21;
-}
 
 /* FOOTER */
 body

@@ -1,5 +1,5 @@
 <!-- FOOTER -->
-<footer class="page-footer font-small white lighten-1">
+<footer class="page-footer font-small white lighten-1 shadow-top margtop-2">
     <!-- FOOTER ELEMENTS -->
     <div class="container">
         <!-- ROW -->
@@ -9,11 +9,17 @@
                 <div class="mb-2 flex-center">
                     <!-- FACEBOOK -->
                     <a class="fb-ic">
-                        <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        <i class="fab fa-facebook-f white-text mr-md-5 mr-3 fa-2x"> </i>
                     </a>
+                    
                     <!--INSTAGRAM-->
                     <a class="ins-ic">
-                        <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        <i class="fab fa-instagram white-text mr-md-5 mr-3 fa-2x"> </i>
+                    </a>
+                    
+                    <!--PHONE-->
+                    <a class="ins-ic">
+                        <i class="fas fa-phone-square white-text mr-md-5 mr-3 fa-2x"> </i>
                     </a>
                 </div>
             </div>
