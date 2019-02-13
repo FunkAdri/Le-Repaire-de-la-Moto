@@ -2,8 +2,8 @@
 
 // FINI D'ÊTRE REFAIT POUR LE SITE
 
-class patients extends database {
-    // Attributs utilisés dans les requêtes de la table patients
+class user extends database {
+    // Attributs utilisés dans les requêtes de la table user
     public $id;
     public $lastname;
     public $firstname;
@@ -49,7 +49,7 @@ class patients extends database {
         $sql->bindValue(':lastname',$this->lastname,PDO::PARAM_STR);
         $sql->bindValue(':firstname',$this->firstname,PDO::PARAM_STR);
         $sql->bindValue(':birthdate',$this->birthdate,PDO::PARAM_STR);
-        $sql->bindValue(':mail',$this->mail,PDO::PARAM_STR);
+        $sql->bindValue(':email',$this->email,PDO::PARAM_STR);
         $sql->bindValue(':phone',$this->phone,PDO::PARAM_STR);
         $sql->bindValue(':address',$this->address,PDO::PARAM_STR);
         $sql->bindValue(':cp',$this->cp,PDO::PARAM_STR);

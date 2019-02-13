@@ -1,32 +1,42 @@
 <?php
-require_once '/models/database.php';
-require_once '/models/userModel.php';
+require_once '../models/database.php';
+require_once '../models/userModel.php';
 
-// Instanciation de l'objet Hospital contenant les méthodes utilisées
+// Instanciation de l'objet User contenant les méthodes utilisées
 $userOBJ = new user();
 $addSuccess = false;
-$link = '/views/liste-patients.php';
-$successPage = 'Patient ajouté';
-$linkText = 'des patients';
+//$link = '/views/liste-patients.php';
+$successPage = 'Vous êtes bien inscrit !';
+//$linkText = 'des patients';
 
-// Gestion de l'affichage des bandeaux succès (success.php) et echec (failure.php)
+// Gestion de l'affichage des bandeaux succès (success.php)
 $rendezvousSuccess = false;
-$rendezvousFailure = false;
 $failurePage = 'Le mail ' . $userOBJ->email . ' ';
 
 // variable de récupération d'erreurs
 $arrayError = [];
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
 
 // Test des champs obligatoires
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // regex utilisées pour le contrôle de saisie
     $patternName = '/^[a-zA-ZÀ-Ÿ \'-]*$/';
     $patternPhone = '/^0[0-9]([ .-]?[0-9]{2}){4}$/';
+    $patternAddress = '/^[0-9a-zA-ZÀ-Ÿ \'-]*$/';
+    $patternCp = '/^[0-9]{5,5}$/';
+    
     // contrôle de saisie
     
     // LASTNAME
     if (empty($_POST['inputLastname'])) {
-        $arrayError['lastnameErr'] = 'Le nom est requis';
+        $arrayError['lastnameErr'] = ' requis';
     } else {
         $userOBJ->lastname = test_input($_POST['inputLastname']);
         // vérifie si le champs contient des lettres et de la ponctuation
@@ -40,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     // FIRSTNAME
     if (empty($_POST['inputFirstname'])) {
-        $arrayError['firstnameErr'] = 'Le prénom est requis';
+        $arrayError['firstnameErr'] = ' requis';
     } else {
         $userOBJ->firstname = test_input($_POST['inputFirstname']);
         
@@ -53,22 +63,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
     
-    // EMAIL
-    if (empty($_POST['inputEmail'])) {
-        $arrayError['emailErr'] = 'L\'email est requis';
-    } else {
-        $userOBJ->email = test_input($_POST['inputEmail']);
-        // vérifie si le champs contient un email
-        if (!filter_var($userOBJ->email, FILTER_VALIDATE_EMAIL)) {
-            $arrayError['emailErr'] = 'Format d\'email invalide ex : prenom.nom@mail.com';
-        } else {
-            unset($arrayError['emailErr']);
-        }
-    }
-    
     // BIRTHDATE
     if (empty($_POST['inputBirthdate'])) {
-        $arrayError['birthdateErr'] = 'La date de naissance est requise';
+        $arrayError['birthdateErr'] = ' requise';
     } else {
         $userOBJ->birthdate = test_input($_POST['inputBirthdate']);
         $dateTime1 = new DateTime($userOBJ->birthdate);
@@ -81,9 +78,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
     
+    // EMAIL
+    if (empty($_POST['inputEmail'])) {
+        $arrayError['emailErr'] = ' requis';
+    } else {
+        $userOBJ->email = test_input($_POST['inputEmail']);
+        // vérifie si le champs contient un email
+        if (!filter_var($userOBJ->email, FILTER_VALIDATE_EMAIL)) {
+            $arrayError['emailErr'] = 'Format d\'email invalide ex : prenom.nom@mail.com';
+        } else {
+            unset($arrayError['emailErr']);
+        }
+    }
+    
     // PHONE
     if (empty($_POST['inputPhone'])) {
-        $arrayError['phoneErr'] = 'Le téléphone est requis.';
+        $arrayError['phoneErr'] = ' requis.';
     } else {
         $userOBJ->phone = test_input($_POST['inputPhone']);
         if (!preg_match($patternPhone, $userOBJ->phone)) {
@@ -95,15 +105,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     // ADDRESS
     if (empty($_POST['inputAddress'])) {
-        $arrayError['addressErr'] = 'L\'adresse est requise';
+        $arrayError['addressErr'] = ' requise';
     } else {
         $userOBJ->address = test_input($_POST['inputAddress']);
         // vérifie si le champs contient des lettres et de la ponctuation
-        if (!preg_match($patternName, $userOBJ->address)) {
+        if (!preg_match($patternAddress, $userOBJ->address)) {
             $arrayError['addressErr'] = 'Caractères incorrects ex : 1 Ruelle Cabot';
         } else {
             $userOBJ->address = mb_strtoupper($userOBJ->address,'UTF-8');
             unset($arrayError['addressErr']);
+        }
+    }
+    
+    // CP
+    if (empty($_POST['inputCp'])) {
+        $arrayError['cpErr'] = ' requis';
+    } else {
+        $userOBJ->cp = test_input($_POST['inputCp']);
+        // vérifie si le champs contient des lettres et de la ponctuation
+        if (!preg_match($patternCp, $userOBJ->cp)) {
+            $arrayError['cpErr'] = 'Caractères incorrects ex : 76210';
+        } else {
+            $userOBJ->cp = mb_strtoupper($userOBJ->cp,'UTF-8');
+            unset($arrayError['cpErr']);
+        }
+    }
+    
+    // CITY
+    if (empty($_POST['inputCity'])) {
+        $arrayError['cityErr'] = ' requise';
+    } else {
+        $userOBJ->city = test_input($_POST['inputCity']);
+        // vérifie si le champs contient des lettres et de la ponctuation
+        if (!preg_match($patternName, $userOBJ->city)) {
+            $arrayError['cityErr'] = 'Caractères incorrects ex : Bolbec';
+        } else {
+            $userOBJ->city = mb_strtoupper($userOBJ->city,'UTF-8');
+            unset($arrayError['cityErr']);
         }
     }
     
@@ -126,11 +164,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 // fonction de sécurisation de la saisie, injection de code, espaces et antislashs
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
 
 ?>

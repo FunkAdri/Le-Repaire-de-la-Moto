@@ -1,46 +1,32 @@
 <html>
-
+<!-- https://codepen.io/anon/pen/OdwvRv -->
 <head>
    <title>Le Repaire de la Moto - Error 404</title>
    <link href="/assets/error404.css" rel="stylesheet" type="text/css" />
-   <link href="https://fonts.googleapis.com/css?family=Quicksand:500|Roboto|Mukta" rel="stylesheet">
-   <link rel="shortcut icon" type="image/png" href="favicon.png" />
-   <meta property="og:site_name" content="wave.ac" />
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
+   <link href='https://fonts.googleapis.com/css?family=Anton|Passion+One|PT+Sans+Caption' rel='stylesheet' type='text/css'>
 </head>
-
-<script>
-   var textToShow = [
-      "we've hit the limiter, boys!",
-      "kimmywimmywu lead you down the wrong path!",
-      "yikes, you've fallen way too deep!",
-      "whoa there, watch your step!",
-      "good game... good game.",
-      "haha... we know, dude.",
-      "that's the least of my worries."
-   ];
-   $(document).ready(function() {
-      $("#rand-quote").html(
-         textToShow[Math.floor(Math.random() * textToShow.length)]
-      );
-   });
-</script>
-
-<div id="bubbles"></div>
    
 <body>
-   <div id="app-mount">
-      <div id="text-section">
-         <p id="info">PAGE NOT FOUND</p>
-         <p id="error">404</p>
-      </div>
-
-      <div id="links">
-         <p id="rand-quote"></p>
-      </div>
-
-       <a id="back-to-safety" href="/views/accueil.php"><img src="https://cdn.discordapp.com/attachments/217459438452211722/367088105452339202/if_home_216242.png" draggable="false" id="home-ico" />Back to safety</a>
-   </div>
+   <!-- Error Page -->
+            <div class="error">
+                <div class="container-floud">
+                    <div class="col-xs-12 ground-color text-center">
+                        <div class="container-error-404">
+                            <div class="clip"><div class="shadow"><span class="digit thirdDigit"></span></div></div>
+                            <div class="clip"><div class="shadow"><span class="digit secondDigit"></span></div></div>
+                            <div class="clip"><div class="shadow"><span class="digit firstDigit"></span></div></div>
+                            <div class="msg">OH!<span class="triangle"></span></div>
+                        </div>
+                        <h2 class="h1">La page n'existe pas, désolé :/</h2>
+                    </div>
+                </div>
+            </div>
+        <!-- Error Page -->
 </body>
-
+<script type="text/javascript" src="/assets/error404.js"></script>
+<!-- BOOTSTRAP -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.15/js/mdb.min.js"></script>                                                                                                              
 </html>
