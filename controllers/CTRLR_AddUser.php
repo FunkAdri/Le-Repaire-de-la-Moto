@@ -115,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             $addFailure = false;
             // exécute la méthode permettant l'ajout de patient
-            $testDoubleEntry = $userOBJ->addPatient();
+            $testDoubleEntry = $userOBJ->addUser();
             if ($testDoubleEntry === false) {
                 $addSuccess = false; // variable mise à false
             } else {
