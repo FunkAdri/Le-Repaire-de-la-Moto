@@ -1,28 +1,58 @@
 /* GÉNÉRAL */
 div.card {
-   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
 }
-
+.marg-center{
+    margin: auto
+}
 .margtop-1 {
-  margin-top: 1rem;
-  backgrounnd-color: red;
+    margin-top: 1rem;
 }
 .margtop-2 {
-   margin-top: 2rem; 
+    margin-top: 2rem; 
 }
-.pad {
-    padding-top: 5rem;
+.marg-bot {
+    margin-bottom: 1rem;
 }
-.pad2 {
-    padding-bottom: 5rem;
+.marg-bot2 {
+    margin-bottom: 3rem;
+}
+.pad-center {
+    padding: auto;
+}
+.pad-bot {
+    padding-bottom: 1rem;
+}
+.text-center {
+    text-align: center;
 }
 
 /* ACCUEIL */
 .marg-carrousel {
     margin-top: 1rem;
 }
-.text-center{
-    text-align: center;
+
+/* AGENDA */
+
+/* CONTACT */
+.card-contact {
+    margin-right: 3rem;
+}
+.mobileHide { display: inline; } 
+
+@media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 1024px){
+    .card-contact { margin: 0;}
+    .mobileHide { display: none;} 
+  }
+
+/* INSC-CONNEX */
+.margtop-choice {
+    margin-top: 6rem;
+}
+.margbot-choice {
+    margin-bottom: 6rem;
 }
 
 /* INSCRIPTION */
@@ -42,29 +72,46 @@ div.card {
 
 /* PROFILS */
 .align-insc {
-  text-align: center;
+    text-align: center;
 }
 .check-align {
-  margin: 0 auto;
-  width: 100px;
+    margin: 0 auto;
+    width: 100px;
 }
 .pad-lr {
-  padding-left: 5rem;
-  padding-right: 1rem;
+    padding-left: 5rem;
+    padding-right: 1rem;
 }
 .pad-top {
-  padding-top: 1rem;
+    padding-top: 1rem;
 }
 .pad-box {
-  padding-left: 1rem;
+    padding-left: 1rem;
 }
 
 /* NAVBAR */
 
 /* FOOTER */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  min-height: 100%;
+
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+  margin-bottom: -50px;
+}
+
+.footer,
+.push {
+  height: 50px;
+}
+
 body
 {
-  padding:0;margin:0;
+    padding:0;margin:0;
 }
 a {
     color: #6195FF;
@@ -101,19 +148,26 @@ a:hover, a:focus {
     margin-bottom: 13px;
 }
 .footer-follow li a {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  border-radius: 3px;
-  background-color: #6195FF;
-  color:#FFF;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 3px;
+    background-color: #6195FF;
+    color:#FFF;
 }
 .footer-copyright p {
     text-align: center;
     font-size: 14px;
     text-transform: uppercase;
     margin: 0;
-  color:#868F9B;
+    color:#868F9B;
+}
+.hrefstyle {
+    color: black;
+    text-decoration: none;
+}
+.copycenter {
+    text-align: center;
 }

@@ -11,7 +11,7 @@ switch ($request) {
         break;
     
     case '/inscription' :
-        require __DIR__ . '/views/inscription.php';
+        require __DIR__ . '/views/inscription-connexion.php';
         break;
     
     case '/agenda' :

@@ -13,6 +13,7 @@ class user extends database {
     public $address;
     public $cp;
     public $city;
+    public $password;
     public $search;
     public $rowStart = 0;
     public $rowPerPage = 5;
@@ -54,6 +55,10 @@ class user extends database {
         $sql->bindValue(':address',$this->address,PDO::PARAM_STR);
         $sql->bindValue(':cp',$this->cp,PDO::PARAM_STR);
         $sql->bindValue(':city',$this->city,PDO::PARAM_STR);
+        // On utilise la fonction password_hash pour crypter le mot de passe de l'utilisateur
+        $this->password = password_hash($this->password,PASSWORD_DEFAULT);
+        // On envoie ensuite le mot de passe dans la base de donnée
+        $sql->bindValue(':password',$this->password,PDO::PARAM_STR);
         // On exécute la fonction
         return $sql->execute();
     }
