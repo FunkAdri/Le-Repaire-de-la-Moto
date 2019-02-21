@@ -107,7 +107,7 @@ require_once '../controllers/CTRLR_AddMoto.php';
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Validation -->
                             <div class="form-row elegant-color-dark">
                                 <div class="md-form col-md-12 pad-button text-center">

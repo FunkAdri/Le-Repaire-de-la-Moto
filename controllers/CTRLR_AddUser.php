@@ -183,6 +183,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // VALIDER
+    var_dump($arrayError);
     if (isset($_POST['submit']) && count($arrayError) == 0) {
         $count = $userOBJ->checkFree(); // Vérification de l'existence d'un doublon avant insertion dans la base
         if ($count > 0) {

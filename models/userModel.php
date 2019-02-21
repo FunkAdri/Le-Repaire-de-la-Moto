@@ -45,7 +45,7 @@ class user extends database {
      */
     public function addUser() {
         // On prépare la requête -> "Insert dans la table USER les champs égaux aux ID dans les colonnes correspondantes"
-        $sql = $this->database->prepare('INSERT INTO `USER` (lastname, firstname, birthdate, email, phone, address, cp, city, password) VALUES (:lastname, :firstname, :birthdate, :email, :phone, :address, :cp, :city, :password)');
+        $sql = $this->database->prepare('INSERT INTO `USER` (lastName, firstName, birthDate, email, phone, address, cp, city, password) VALUES (:lastname, :firstname, :birthdate, :email, :phone, :address, :cp, :city, :password)');
         // On bind les valueurs
         $sql->bindValue(':lastname',$this->lastname,PDO::PARAM_STR);
         $sql->bindValue(':firstname',$this->firstname,PDO::PARAM_STR);
