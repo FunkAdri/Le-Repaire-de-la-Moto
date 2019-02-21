@@ -27,7 +27,7 @@ class user extends database {
     // Controle des doublons 
     /**
      * Vérifie si le mail du patient existe déjà, grâce aux attributs instanciés plus haut
-     * afin d'éviter un doublon
+     * afin d'éviter un doublon ce qui produirait des conflits dans les connexions utilisateur
      * @return 1 ou 0 s'il y a ou pas des doublons possibles
      */
     public function checkFree() {
@@ -45,7 +45,7 @@ class user extends database {
      */
     public function addUser() {
         // On prépare la requête -> "Insert dans la table USER les champs égaux aux ID dans les colonnes correspondantes"
-        $sql = $this->database->prepare('INSERT INTO `USER` (lastname, firstname, birthdate, email, phone, address, cp, city) VALUES (:lastname, :firstname, :birthdate, :email, :phone, :address, :cp, :city)');
+        $sql = $this->database->prepare('INSERT INTO `USER` (lastname, firstname, birthdate, email, phone, address, cp, city, password) VALUES (:lastname, :firstname, :birthdate, :email, :phone, :address, :cp, :city, :password)');
         // On bind les valueurs
         $sql->bindValue(':lastname',$this->lastname,PDO::PARAM_STR);
         $sql->bindValue(':firstname',$this->firstname,PDO::PARAM_STR);
@@ -65,14 +65,15 @@ class user extends database {
     
     /**
      * Méthode permettant d'afficher les données d'un utilisateur,
-     * grâce aux attributs instanciés plus haut
+     * grâce aux attributs instanciés plus haut (page profil)
      * @return Affichage des infos de l'utilisateur
      */
      public function displayUser() {
         // On prépare la requête -> "Prends l'e patient'utilisateur égale à l'id"
-        $sql = $this->database->prepare('SELECT * FROM `USER` WHERE id = :id');
+        $sql = $this->database->prepare('SELECT * FROM `USER` WHERE email = :email AND password = :password');
         // On bind la valeur ID au marqueur nominatif ID
-        $sql->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $sql->bindValue(':email', $this->email, PDO::PARAM_STR);
+        $sql->bindValue(':password', $this->password, PDO::PARAM_STR);
         $sql->execute();
         return $sql->fetch(PDO::FETCH_OBJ);
     }

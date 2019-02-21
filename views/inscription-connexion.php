@@ -21,7 +21,7 @@
             <div class="card">
                 <div class="form-row form-space margtop-1">
                     <div class="md-form col-md-8 marg-center margtop-1">
-                        <label class="" for="inputLogin">Identifiant<span class="red-text"> <?= isset($arrayError['#']) ? $arrayError['#'] : ''; ?></span></label>
+                        <label class="" for="inputLogin">Adresse E-Mail<span class="red-text"> <?= isset($arrayError['#']) ? $arrayError['#'] : ''; ?></span></label>
                         <input class="form-control" id="inputLogin" type="text" name="inputLogin" value="<?= count($arrayError) != 0 ? $userOBJ->lastname : ''; ?>" />
                     </div>
                 </div>

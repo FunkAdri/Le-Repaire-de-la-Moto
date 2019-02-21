@@ -161,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $userOBJ->password = test_input($_POST['inputPassword']);
         // On détermine sa longueur avec la fonction string length et si il est plus petit que 8
         // caractères, on le rejette et on affiche un message
-        if (strlen($password) < 8) {
+        if (strlen($_POST['inputPassword']) < 8) {
             echo "Mot de passe trop court ! 8 Caractères minimum";
             // On check que le mot de passe fonctionne avec la regex
         } elseif (!preg_match($patternPassword, $userOBJ->password)) {
